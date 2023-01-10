@@ -37,3 +37,18 @@ body{
     font-family: 'Inter', sans-serif;
 }
 
+.splide__pagination{
+  bottom: -3px !important;
+}
+.splide__pagination__page{
+  background: #D0E8F7 !important;
+}
+.splide__pagination__page.is-active{
+  background: #148ED7 !important;
+}
+
+@media screen and (min-width: 1200px){
+  .splide__pagination{
+    bottom: 10px !important;
+  }
+}

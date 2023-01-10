@@ -2,6 +2,7 @@ import React from 'react'
 import * as IMAGES from "../../assets/";
 import * as ICONS from "../../assets/icons";
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 const Footer = () => {
 
@@ -9,7 +10,9 @@ const Footer = () => {
     <footer className='bg-isSkyBlue500 p-4 pt-10 md:py-12'>
         <section className='md:w-[85%] md:mx-auto'>
           <div className='flex justify-center border-b border-isSkyBlue400 pb-6 md:p-0 md:justify-between md:py-6'>
-            <img className='w-[40%] md:w-[12%]' src={IMAGES.LOGO_FOOTER} alt='' />
+            <HashLink smooth to="/#home">
+              <img className='w-[40%] md:w-[82%]' src={IMAGES.LOGO_FOOTER} alt='' />
+            </HashLink>
             <div className='hidden font-inter md:flex md:space-x-12 md:text-[#9898F0] md:text-sm'>
               <Link to='/' className="hover:text-white">Terms & Conditions</Link>
               <Link to='/privacy_policy' className="hover:text-white">Privacy policy</Link>
@@ -21,7 +24,7 @@ const Footer = () => {
 
               <div className='text-sm font-[400] flex space-x-3 md:hidden'>
                 <Link to='/'>Terms & Conditions</Link>
-                <Link to='/'>Privacy policy</Link>
+                <Link to='/privacy_policy'>Privacy policy</Link>
                 <Link to='/'>FAQs</Link>
               </div>
               

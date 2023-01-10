@@ -6,6 +6,8 @@ import GIFT_ICON from "../assets/icons/gift.png"
 import APPLE_ICON from "../assets/icons/apple-icon.png"
 import GOOGLE_ICON from "../assets/icons/google-icon.png"
 import SLIDER_1 from "../assets/images/slider-1.png"
+import SLIDER_2 from "../assets/images/slider-2.png"
+import SLIDER_3 from "../assets/images/slider-3.png"
 import IPHONE_1 from "../assets/images/iphone-14.png"
 import PHONE from "../assets/images/phone.png"
 import IPHONE_2 from "../assets/images/iphone-14-1.png"
@@ -29,6 +31,8 @@ export {
     APPLE_ICON,
     GOOGLE_ICON,
     SLIDER_1,
+    SLIDER_2,
+    SLIDER_3,
     IPHONE_1,
     IPHONE_2,
     IPHONE_BG_1,

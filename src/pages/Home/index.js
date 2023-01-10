@@ -3,36 +3,39 @@ import { Link } from "react-router-dom";
 import * as IMAGES from "../../assets/";
 import * as ICONS from "../../assets/icons";
 import * as SVGS from "../../assets/svgs";
+import Contact from "../../component/partials/Contact";
 import { Offers } from "../../utils/data/offer";
-import TopNavbar from './../../component/nav/TopNavbar';
-import Footer from './../../component/partials/Footer';
+import TopNavbar from "./../../component/nav/TopNavbar";
+import Footer from "./../../component/partials/Footer";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
 
 const Home = () => {
   const [navBarOpen, setNavBarOpen] = useState(false);
-  const [activeFaq, setActiveFaq] = useState(0)
-  const [showFaqImage, setShowFaqImage] = useState('')
+  const [activeFaq, setActiveFaq] = useState(0);
+  const [showFaqImage, setShowFaqImage] = useState("");
 
   const toggleTab = (tab) => {
     setActiveFaq((activeTab) => {
-      setShowFaqImage(tab)
-      return activeTab == tab ? -+tab : tab
-    })
-  }
+      setShowFaqImage(tab);
+      return activeTab == tab ? -+tab : tab;
+    });
+  };
 
   useEffect(() => {
     // console.log(activeFaq)
-  },[activeFaq])
+  }, [activeFaq]);
   return (
     <div className='h-screen w-screen overflow-scroll'>
-      
       {/* Header */}
-      <TopNavbar navBarOpen={navBarOpen} setNavBarOpen={setNavBarOpen}/>
+      <TopNavbar navBarOpen={navBarOpen} setNavBarOpen={setNavBarOpen} />
       {/* End Header */}
 
       {/* Main */}
-      <main className='mt-20 md:mt-32 relative' id="home">
+      <main className='mt-20 md:mt-32 relative' id='home'>
         <div className='p-4 mt-5 md:w-[85%] md:mx-auto md:flex md:justify-between'>
-          <aside>
+          <aside data-aos='fade-up'
+          data-aos-duration='1000'>
             <h1 className='text-isSkyBlue400 text-[2.5rem] font-semibold leading-[3rem] md:text-[4rem] md:leading-[4.5rem]'>
               Try once <br /> and Every time <br /> with -{" "}
               <span className='text-isSkyBlue550'>Paytyme</span>
@@ -65,18 +68,52 @@ const Home = () => {
             </div>
           </aside>
           <aside className='mt-12 md:mt-0'>
-            <div className='slider'>
-              <div className='slider-1'>
-                <img
-                  className='md:w-[95%]'
-                  src={IMAGES.SLIDER_1}
-                  alt='slider-1'
-                />
-              </div>
-            </div>
+            <Splide 
+                options={ {
+                  rewind: true,
+                  width : 650,
+                  autoplay : true,
+                  // gap   : '1rem',
+                  arrows: false,
+                } }
+                hasTrack={false} 
+                // aria-label='...' 
+                className='slider'>
+              <SplideTrack>
+                <SplideSlide>
+                  <div className='slider-1'>
+                    <img
+                      className='md:w-[]'
+                      src={IMAGES.SLIDER_1}
+                      alt='slider-1'
+                    />
+                  </div>
+                </SplideSlide>
+
+                <SplideSlide>
+                  <div className='slider-1'>
+                    <img
+                      className='md:w-[]'
+                      src={IMAGES.SLIDER_2}
+                      alt='slider-1'
+                    />
+                  </div>
+                </SplideSlide>
+
+                <SplideSlide>
+                  <div className='slider-1'>
+                    <img
+                      className='md:w-[]'
+                      src={IMAGES.SLIDER_3}
+                      alt='slider-1'
+                    />
+                  </div>
+                </SplideSlide>
+              </SplideTrack>
+            </Splide>
           </aside>
         </div>
-        <div className='bg-isSkyBlue50 p-4 rounded-t-2xl' id="about">
+        <div className='bg-isSkyBlue50 p-4 rounded-t-2xl' id='about'>
           {/* All bill settlement */}
           <section className='flex flex-col md:grid md:grid-cols-2 md:gap-32 py-6 md:w-[85%] md:mx-auto md:items-center'>
             <aside className='bg-isPurple150 order-2 md:-order-1 flex justify-center'>
@@ -147,17 +184,26 @@ const Home = () => {
                     <span className='text-[1.2rem] block'>
                       Sign up in minutes
                     </span>
-                    <p className={`text-isGray mt-2 font-inter font-normal text-[14px] w-[90%] ${activeFaq !== 1 && 'hidden'}`}>
+                    <p
+                      className={`text-isGray mt-2 font-inter font-normal text-[14px] w-[90%] ${
+                        activeFaq !== 1 && "hidden"
+                      }`}
+                    >
                       Download Paytyme on your Play store or App store. Register
                       using your email and password. Once login, you can fund
                       your wallet and commence transactions on any of our
                       services.
                     </p>
                   </div>
-                  <span className='text-isPurple400 text-2xl absolute right-0 cursor-pointer' onClick={() => toggleTab(1)}>
-                    {
-                      activeFaq == 1 ? <ICONS.CgChevronUpO/> : <ICONS.CgChevronDownO />
-                    }
+                  <span
+                    className='text-isPurple400 text-2xl absolute right-0 cursor-pointer'
+                    onClick={() => toggleTab(1)}
+                  >
+                    {activeFaq == 1 ? (
+                      <ICONS.CgChevronUpO />
+                    ) : (
+                      <ICONS.CgChevronDownO />
+                    )}
                   </span>
                 </div>
                 {/* end single item */}
@@ -169,7 +215,11 @@ const Home = () => {
                   </span>
                   <div>
                     <span className='text-[1.2rem] block'>Fund Wallet</span>
-                    <p className={`text-isGray mt-2 font-inter font-normal text-[14px] w-[90%] ${activeFaq !== 2 && 'hidden'}`}>
+                    <p
+                      className={`text-isGray mt-2 font-inter font-normal text-[14px] w-[90%] ${
+                        activeFaq !== 2 && "hidden"
+                      }`}
+                    >
                       Click on the{" "}
                       <span className='font-bold'>Fund Wallet</span> icon to
                       select any payment methods that suit you. You can fund
@@ -177,10 +227,15 @@ const Home = () => {
                       filling a form to pay directly into our account.
                     </p>
                   </div>
-                  <span className='text-isPurple400 text-2xl absolute right-0 cursor-pointer' onClick={() => toggleTab(2)}>
-                  {
-                      activeFaq == 2 ? <ICONS.CgChevronUpO/> : <ICONS.CgChevronDownO />
-                    }
+                  <span
+                    className='text-isPurple400 text-2xl absolute right-0 cursor-pointer'
+                    onClick={() => toggleTab(2)}
+                  >
+                    {activeFaq == 2 ? (
+                      <ICONS.CgChevronUpO />
+                    ) : (
+                      <ICONS.CgChevronDownO />
+                    )}
                   </span>
                 </div>
                 {/* end single item */}
@@ -192,16 +247,25 @@ const Home = () => {
                   </span>
                   <div>
                     <span className='text-[1.2rem] block'>Add Card</span>
-                    <p className={`text-isGray mt-2 font-inter font-normal text-[14px] w-[90%] ${activeFaq !== 3 && 'hidden'}`}>
+                    <p
+                      className={`text-isGray mt-2 font-inter font-normal text-[14px] w-[90%] ${
+                        activeFaq !== 3 && "hidden"
+                      }`}
+                    >
                       You will be advice to add a card of your choice when
                       making transactions or when the funds in your wallet is
                       depleted.
                     </p>
                   </div>
-                  <span className='text-isPurple400 text-2xl absolute right-0 cursor-pointer' onClick={() => toggleTab(3)}>
-                  {
-                      activeFaq == 3 ? <ICONS.CgChevronUpO/> : <ICONS.CgChevronDownO />
-                    }
+                  <span
+                    className='text-isPurple400 text-2xl absolute right-0 cursor-pointer'
+                    onClick={() => toggleTab(3)}
+                  >
+                    {activeFaq == 3 ? (
+                      <ICONS.CgChevronUpO />
+                    ) : (
+                      <ICONS.CgChevronDownO />
+                    )}
                   </span>
                 </div>
                 {/* end single item */}
@@ -215,30 +279,46 @@ const Home = () => {
                     <span className='text-[1.2rem] block'>
                       Commence Transaction
                     </span>
-                    <p className={`text-isGray mt-2 font-inter font-normal text-[14px] w-[90%] ${activeFaq !== 4 && 'hidden'}`}>
+                    <p
+                      className={`text-isGray mt-2 font-inter font-normal text-[14px] w-[90%] ${
+                        activeFaq !== 4 && "hidden"
+                      }`}
+                    >
                       You will be advice to add a card of your choice when
                       making transactions or when the funds in your wallet is
                       depleted.
                     </p>
                   </div>
-                  <span className='text-isPurple400 text-2xl absolute right-0 cursor-pointer' onClick={() => toggleTab(4)}>
-                  {
-                      activeFaq == 4 ? <ICONS.CgChevronUpO/> : <ICONS.CgChevronDownO />
-                    }
+                  <span
+                    className='text-isPurple400 text-2xl absolute right-0 cursor-pointer'
+                    onClick={() => toggleTab(4)}
+                  >
+                    {activeFaq == 4 ? (
+                      <ICONS.CgChevronUpO />
+                    ) : (
+                      <ICONS.CgChevronDownO />
+                    )}
                   </span>
                 </div>
                 {/* end single item */}
               </div>
             </aside>
             <aside className='flex justify-center'>
-              <img className='w-[100%] md:w-[90%]' src={IMAGES.IPHONE_WORK_1}  alt='' />
+              <img
+                className='w-[100%] md:w-[90%]'
+                src={IMAGES.IPHONE_WORK_1}
+                alt=''
+              />
             </aside>
           </section>
           {/* End how it works */}
         </div>
 
         {/* Our Offer */}
-        <div className='bg-isSkyBlue500 mt-6 p-4 px-6 ml-6 rounded-l-2xl md:mt-0 md:ml-0 md:rounded-none md:pb-20' id="how_it_works">
+        <div
+          className='bg-isSkyBlue500 mt-6 p-4 px-6 ml-6 rounded-l-2xl md:mt-0 md:ml-0 md:rounded-none md:pb-20'
+          id='how_it_works'
+        >
           <section className='pt-4 md:mt-10 md:w-[85%] md:mx-auto'>
             <div className='mb-8'>
               <h2
@@ -290,7 +370,7 @@ const Home = () => {
         {/* End Our Offer */}
 
         {/* Make Payment */}
-        <section className='bg-isSkyBlue50 p-4 md:py-24' id="services">
+        <section className='bg-isSkyBlue50 p-4 md:py-24' id='services'>
           <section className='flex flex-col md:grid md:grid-cols-2 md:gap-5 py-6 md:w-[85%] md:mx-auto md:items-center md:bg-white md:rounded-2xl md:border md:border-isSkyBlue100 md:py-0'>
             <aside className='bg-white rounded-lg border border-isSkyBlue100 order-2 md:-order-1 flex justify-center relative overflow-hidden md:rounded-none md:border-none md:rounded-l-2xl'>
               <img
@@ -407,139 +487,15 @@ const Home = () => {
         {/* End Get Our App */}
 
         {/* Get In Touch */}
-        <section className='bg-isSkyBlue50 p-4 pt-20 md:py-24' id="contact">
-          <div className='md:w-[85%] md:mx-auto'>
-            <div className='mb-8 text-center'>
-              <h2
-                className='text-isSkyBlue400 text-[2.2rem] font-semibold 
-                    leading-[2.6rem] md:text-[3.5rem] md:leading-[3.8rem]'
-              >
-                Get in Touch
-              </h2>
-              <p className='font-inter text-isGray font-[400] my-4 md:w-[35%] md:mx-auto'>
-                You can get in touch with us with any of the contact details or
-                using the form below.
-              </p>
-            </div>
-            <div className='flex flex-col justify-between md:shadow-sm md:bg-white md:rounded-xl md:flex-row md:justify-start'>
-              <aside className='bg-skyBlue500 p-8 pb-40 md:w-2/6 md:rounded-lg relative overflow-hidden md:pb-48'>
-                <div className='mb-4'>
-                  <h5 className='text-white text-[1.4rem] font-[400]'>
-                    Contact Information
-                  </h5>
-                  <p className='text-[15px] font-normal text-sky-300 leading-4'>
-                    Don't hesitate to contact us if you have any questions.
-                  </p>
-                </div>
-                <div className='mt-8'>
-                  <div className='flex items-center space-x-4 text-white'>
-                    <span className='text-2xl'>
-                      <ICONS.MdPhoneInTalk />
-                    </span>
-                    <div className='flex flex-col font-inter font-[400] leading-7'>
-                      <span>+23490 3668 8636</span>
-                      <span>+23480 2832 0651</span>
-                    </div>
-                  </div>
 
-                  <div className='flex items-center space-x-4 text-white mt-5 border-t border-t-[#43A5DF] pt-5'>
-                    <span className='text-2xl'>
-                      <ICONS.BiEnvelope />
-                    </span>
-                    <div className='flex flex-col font-inter font-[400] leading-7'>
-                      <span>admin@paytyme.com.ng</span>
-                      <span>support@paytyme.com.ng</span>
-                    </div>
-                  </div>
-                </div>
-                <img
-                  className='absolute left-0 bottom-0 w-[80%]'
-                  src={IMAGES.PHONE}
-                  alt=''
-                />
-              </aside>
-              <aside className='-order-1 md:order-1 mb-8'>
-                <div className='md:w-[85%] md:mx-auto md:mt-10'>
-                  <form action=''>
-                    <div className='justify-between'>
-                      <div className='md:grid md:grid-cols-2 md:space-x-10'>
-                        <div className='mb-6'>
-                          <span className='font-inter font-[400] text-sm text-[#B5B5B5] md:text-md'>
-                            First Name
-                          </span>
-                          <input
-                            type='text'
-                            className='text-isDark300 placeholder:text-isDark300 bg-isSkyBlue50 font-inter font-[400] border-b border-b-[#B8DDF3] focus:outline-none focus:border-b-[#4492c0] pb-2 pt-3 w-full md:bg-white'
-                            placeholder='John'
-                          />
-                        </div>
+        <Contact />
 
-                        <div className='my-4 md:mt-0'>
-                          <span className='font-inter font-[400] text-sm text-[#B5B5B5] md:text-md'>
-                            Last Name
-                          </span>
-                          <input
-                            type='text'
-                            className='text-isDark300 placeholder:text-isDark300 font-inter font-[400] border-b border-b-[#B8DDF3] focus:outline-none focus:border-b-[#4492c0] pb-2 pt-3 w-full bg-isSkyBlue50 md:bg-white'
-                            placeholder='Doe'
-                          />
-                        </div>
-                      </div>
-
-                      <div className='md:grid md:grid-cols-2 md:space-x-10'>
-                        <div className='mb-6'>
-                          <span className='font-inter font-[400] text-sm text-[#B5B5B5] md:text-md'>
-                            Email
-                          </span>
-                          <input
-                            type='email'
-                            className='text-isDark300 placeholder:text-isDark300 bg-isSkyBlue50 font-inter font-[400] border-b border-b-[#B8DDF3] focus:outline-none focus:border-b-[#4492c0] pb-2 pt-3 w-full md:bg-white'
-                            placeholder='johndoe@gmail.com'
-                          />
-                        </div>
-
-                        <div className='my-4 md:mt-0'>
-                          <span className='font-inter font-[400] text-sm text-[#B5B5B5] md:text-md'>
-                            Subject
-                          </span>
-                          <input
-                            type='text'
-                            className='text-isDark300 placeholder:text-isDark300 font-inter font-[400] border-b border-b-[#B8DDF3] focus:outline-none focus:border-b-[#4492c0] pb-2 pt-3 w-full bg-isSkyBlue50 md:bg-white'
-                            placeholder='How can we help you?'
-                          />
-                        </div>
-                      </div>
-
-                      <div className=''>
-                        <div className='mb-6'>
-                          <span className='font-inter font-[400] text-sm text-[#B5B5B5] md:text-md'>
-                            Message
-                          </span>
-                          <input
-                            type='text'
-                            className='text-isDark300 placeholder:text-isDark300 bg-isSkyBlue50 font-inter font-[400] border-b border-b-[#B8DDF3] focus:outline-none focus:border-b-[#4492c0] pb-2 pt-3 w-full md:bg-white'
-                            placeholder='Write your message here!'
-                          />
-                        </div>
-                      </div>
-
-                      <button className='bg-skyBlue500 hover:bg-sky-600 text-white p-3 rounded-md font-normal mt-3 w-full md:w-auto md:px-8'>
-                        {" "}
-                        Send message
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </aside>
-            </div>
-          </div>
-        </section>
         {/* End Get In Touch */}
       </main>
       {/* Main */}
 
       {/* Footer */}
-          <Footer/>
+      <Footer />
       {/* End Footer */}
     </div>
   );

@@ -18,7 +18,9 @@ const TopNavbar = ({navBarOpen, setNavBarOpen}) => {
           } md:-translate-y-0 md:flex md:justify-between md:items-center md:w-[85%] md:mx-auto md:relative md:h-full`}
         >
           <aside className='md:flex md:space-x-32 md:items-center'>
-            <HashLink smooth to="/#home" className='flex justify-between cursor-pointer'>
+            <HashLink smooth to="/#home" className='flex justify-between cursor-pointer'
+            onClick={() => setNavBarOpen(false)}
+            >
               <img className='md:h-fit' src={IMAGES.LOGO} alt='' />
               <span className='md:hidden' onClick={() => setNavBarOpen(false)}>
                 <img src={IMAGES.CLOSE_BTN} alt='' />
@@ -30,6 +32,7 @@ const TopNavbar = ({navBarOpen, setNavBarOpen}) => {
                   <HashLink
                     smooth to="/#home"
                     className='text-isDark400 hover:text-isSkyBlue550'
+                    onClick={() => setNavBarOpen(false)}
                   >
                     Home
                   </HashLink>
@@ -38,6 +41,7 @@ const TopNavbar = ({navBarOpen, setNavBarOpen}) => {
                   <HashLink
                     smooth to="/#about"
                     className='text-isDark400 hover:text-isSkyBlue550'
+                    onClick={() => setNavBarOpen(false)}
                   >
                     About
                   </HashLink>
@@ -46,6 +50,7 @@ const TopNavbar = ({navBarOpen, setNavBarOpen}) => {
                   <HashLink
                     smooth to='/#how_it_works'
                     className='text-isDark400 hover:text-isSkyBlue550'
+                    onClick={() => setNavBarOpen(false)}
                   >
                     How it works
                   </HashLink>
@@ -54,6 +59,7 @@ const TopNavbar = ({navBarOpen, setNavBarOpen}) => {
                   <HashLink
                     smooth to="/#services"
                     className='text-isDark400 hover:text-isSkyBlue550'
+                    onClick={() => setNavBarOpen(false)}
                   >
                     Our Services
                   </HashLink>
@@ -62,6 +68,7 @@ const TopNavbar = ({navBarOpen, setNavBarOpen}) => {
                   <HashLink
                     smooth to="/#contact"
                     className='text-isDark400 hover:text-isSkyBlue550'
+                    onClick={() => setNavBarOpen(false)}
                   >
                     Contact
                   </HashLink>
@@ -69,7 +76,7 @@ const TopNavbar = ({navBarOpen, setNavBarOpen}) => {
               </ul>
             </nav>
           </aside>
-          <HashLink smooth to="/#how_it_works" className='flex space-x-2 transition ease-linear delay-150 hover:bg-isSkyBlue600 hover:text-white border border-skyBlue rounded-[4px] w-fit p-2 px-4 font-semibold text-isDark400 mt-7 md:mt-0'>
+          <HashLink smooth to="/#how_it_works" className='flex space-x-2 transition ease-linear delay-150 hover:bg-isSkyBlue600 hover:text-white border border-skyBlue rounded-[4px] w-fit p-2 px-4 font-semibold text-isDark400 mt-7 md:mt-0' onClick={() => setNavBarOpen(false)}>
             <span>Explore our offerings</span>
             <span>
               <img className='w-[90%]' src={IMAGES.GIFT_ICON} alt='' />
